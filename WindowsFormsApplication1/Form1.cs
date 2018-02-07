@@ -359,16 +359,22 @@ namespace WindowsFormsApplication1
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
-        {           
+        {
+            bool enter = false;
             for (int i = 0; i < squares.Length; ++i)
             {
                 if (squares[i].Contains(e.Location))
                 {
+                    enter = true;
                     if(dict.Count > 0)
                     {
                         toolTip1.Show(String.Format("{0:f1}", dict[ct_lb.Text][i]), this, e.Location);
                     }
                 }
+            }
+            if (!enter)
+            {
+                toolTip1.Hide(this);
             }
         }
 
